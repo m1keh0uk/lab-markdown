@@ -223,6 +223,7 @@ with open("README.md", "w") as readme:
     readme.write("The table below shows how frequently each keyword appeared in Trump's tweets from 2009 to 2018.\n\n")
     readme.write("\n".join(table_lines))
     readme.write("\n\n")
+    readme.write("The graph below is a bar chart for the frequency of tweets that had each word ")
     readme.write("![Keyword Bar Graph](plot.png)\n")
     readme.write("\nThe histogram below shows the distribution of how many favorites Trump's tweets received.\n\n")
     readme.write("![Favorite Count Histogram](favorite_hist.png)\n")
