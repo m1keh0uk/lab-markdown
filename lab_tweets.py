@@ -194,7 +194,7 @@ for word in word_counts:
     labels.append(word)
     count = word_counts[word]
     percent = (count / len(data)) * 100
-    percents.append(percents)
+    percents.append(percent)
     table_lines.append(f"| {word.rjust(17).lower()} | {percent:05.2f}             |")
 
 # Plot bar chart
