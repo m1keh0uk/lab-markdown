@@ -18,3 +18,6 @@ The table below shows how frequently each keyword appeared in Trump's tweets fro
 The histogram below shows the distribution of how many favorites Trump's tweets received.
 
 ![Favorite Count Histogram](favorite_hist.png)
+
+Trumps most liked tweet:
+Such a beautiful and important evening! The forgotten man and woman will never be forgotten again. We will all come together as never before

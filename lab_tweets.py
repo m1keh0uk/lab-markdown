@@ -166,6 +166,7 @@ word_counts = {
 }
 
 favorite_counts = []
+most_likes = 0
 for i, tweet in enumerate(data):
     for word in word_counts:
         try:
@@ -175,15 +176,10 @@ for i, tweet in enumerate(data):
             if word.lower() in tweet['full_text'].lower():
                 word_counts[word] += 1
     favorite_counts.append(tweet['favorite_count'])
+    if tweet['favorite_count'] > most_likes:
+        most_likes = tweet['favorite_count']
+        fav_tweet = tweet['text']
 
-
-# for tweet in data:
-#     text = tweet.get('full_text') or tweet.get('text') or ""
-#     lower_text = text.lower()
-#     for word in word_counts:
-#         if word.lower() in lower_text:
-#             word_counts[word] += 1
-#     favorite_counts.append()
 pprint.pprint(word_counts)
 
 
@@ -215,8 +211,11 @@ plt.hist(favorite_counts, bins=50, edgecolor='black')
 plt.xlabel("Favorite Count")
 plt.ylabel("Number of Tweets")
 plt.title("Distribution of Favorite Counts in Trump Tweets (2009–2018)")
+plt.xlim(0, 200000)
 plt.savefig("favorite_hist.png")
 plt.close()
+
+
 
 # Write to README.md
 with open("README.md", "w") as readme:
@@ -227,4 +226,5 @@ with open("README.md", "w") as readme:
     readme.write("![Keyword Bar Graph](plot.png)\n")
     readme.write("\nThe histogram below shows the distribution of how many favorites Trump's tweets received.\n\n")
     readme.write("![Favorite Count Histogram](favorite_hist.png)\n")
-
+    readme.write("\nTrumps most liked tweet:\n")
+    readme.write(fav_tweet)
