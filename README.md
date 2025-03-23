@@ -14,3 +14,7 @@ The table below shows how frequently each keyword appeared in Trump's tweets fro
 |             happy | 01.26             |
 
 ![Keyword Bar Graph](plot.png)
+
+The histogram below shows the distribution of how many favorites Trump's tweets received.
+
+![Favorite Count Histogram](favorite_hist.png)

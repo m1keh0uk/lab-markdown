@@ -165,22 +165,25 @@ word_counts = {
     'Happy': 0,
 }
 
-# for i, tweet in enumerate(data):
-#     for word in word_counts:
-#         try:
-#             if word.lower() in tweet['text'].lower():
-#                 word_counts[word] += 1
-#         except KeyError:
-#             if word.lower() in tweet['full_text'].lower():
-#                 word_counts[word] += 1
-
-
-for tweet in data:
-    text = tweet.get('full_text') or tweet.get('text') or ""
-    lower_text = text.lower()
+favorite_counts = []
+for i, tweet in enumerate(data):
     for word in word_counts:
-        if word.lower() in lower_text:
-            word_counts[word] += 1
+        try:
+            if word.lower() in tweet['text'].lower():
+                word_counts[word] += 1
+        except KeyError:
+            if word.lower() in tweet['full_text'].lower():
+                word_counts[word] += 1
+    favorite_counts.append(tweet['favorite_count'])
+
+
+# for tweet in data:
+#     text = tweet.get('full_text') or tweet.get('text') or ""
+#     lower_text = text.lower()
+#     for word in word_counts:
+#         if word.lower() in lower_text:
+#             word_counts[word] += 1
+#     favorite_counts.append()
 pprint.pprint(word_counts)
 
 
@@ -207,6 +210,14 @@ plt.title("Keyword Frequency in Trump Tweets (2009–2018)")
 plt.savefig("plot.png")
 plt.close()
 
+plt.figure(figsize=(10, 6))
+plt.hist(favorite_counts, bins=50, edgecolor='black')
+plt.xlabel("Favorite Count")
+plt.ylabel("Number of Tweets")
+plt.title("Distribution of Favorite Counts in Trump Tweets (2009–2018)")
+plt.savefig("favorite_hist.png")
+plt.close()
+
 # Write to README.md
 with open("README.md", "w") as readme:
     readme.write("## Keyword Frequency in Trump Tweets (2009–2018)\n\n")
@@ -214,3 +225,6 @@ with open("README.md", "w") as readme:
     readme.write("\n".join(table_lines))
     readme.write("\n\n")
     readme.write("![Keyword Bar Graph](plot.png)\n")
+    readme.write("\nThe histogram below shows the distribution of how many favorites Trump's tweets received.\n\n")
+    readme.write("![Favorite Count Histogram](favorite_hist.png)\n")
+
