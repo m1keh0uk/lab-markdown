@@ -13,7 +13,7 @@ The table below shows how frequently each keyword appeared in Trump's tweets fro
 |         thank you | 06.21             |
 |             happy | 01.26             |
 
-![Keyword Bar Graph](plot.png)
+The graph below is a bar chart for the frequency of tweets that had each word ![Keyword Bar Graph](plot.png)
 
 The histogram below shows the distribution of how many favorites Trump's tweets received.
 
